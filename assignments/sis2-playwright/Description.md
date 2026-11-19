@@ -37,4 +37,4 @@ The requested presentation describing "AT suites" was not included. The suite gr
 
 A completed local run should discover 10 test cases in 5 .spec.ts files. Record passed, failed and skipped counts and explain any unresolved failures. Collect screenshots of the AI response, terminal and Playwright HTML report.
 
-**Current status (2026-10-23): Not executed against the live application.** Runtime outcomes must be filled in after actual local execution.
+**GitHub Actions result (2026-11-19)** All 10 cases passed against the live application in Chromium. [Four-shard run and merged reports](https://github.com/Tobzhan/software-testing/actions/runs/44565257640)
