@@ -13,14 +13,14 @@ The requested presentation describing "AT suites" was not included. The suite gr
 
 | ID | Suite | Procedure | Expected result | Method |
 | --- | --- | --- | --- | --- |
-| SM-01 | Smoke | Open homepage | Home, login and cart navigation visible | Smoke |
+| SM-01 | Smoke | Open homepage | Home, login and categories navigation visible | Smoke |
 | SM-02 | Smoke | Open first catalog product | Product route, title and price visible | Smoke |
-| AUTH-01 | Authentication | Log in with documented demo user | User menu visible; sign-in link absent | Positive |
+| AUTH-01 | Authentication | Log in with documented demo user | Browser stores an authenticated session and navigates to `/account` | Positive |
 | AUTH-02 | Authentication | Submit nonexistent email and invalid password | Login error visible; still signed out | Negative |
 | SEARCH-01 | Search | Search "hammer" | Search caption, result count and products visible | Positive |
 | SEARCH-02 | Search | Search "zzzxxyy-no-such-tool-qa-2026" | No-results message and zero product cards | Negative / equivalence partition |
 | CART-01 | Cart | Select available product, add to cart | Product in cart, quantity 1, total shown | E2E / functional |
-| CART-02 | Cart | Add product, open cart, remove product | Cart item gone and badge count 0 | Regression |
+| CART-02 | Cart | Add product, open cart, remove product | Cart is empty and the cart badge is hidden | Regression |
 | CONTACT-01 | Contact | Submit empty contact form | Required field errors displayed | Negative / equivalence partition |
 | CONTACT-02 | Contact | Fill names, subject and long message with invalid email; submit | Email validation error shown | Negative |
 
@@ -37,4 +37,4 @@ The requested presentation describing "AT suites" was not included. The suite gr
 
 A completed local run should discover 10 test cases in 5 .spec.ts files. Record passed, failed and skipped counts and explain any unresolved failures. Collect screenshots of the AI response, terminal and Playwright HTML report.
 
-**Current status (2026-10-23): Not executed against the live application.** Runtime outcomes must be filled in after actual local execution.
+**GitHub Actions result (2026-11-19)** All 10 cases passed against the live application in Chromium. [Four-shard run and merged reports](https://github.com/Tobzhan/software-testing/actions/runs/44565257640)

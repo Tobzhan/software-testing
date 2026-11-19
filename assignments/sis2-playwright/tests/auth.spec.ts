@@ -1,8 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-const email = process.env.TEST_CUSTOMER_EMAIL || 'customer@practicesoftwaretesting.com';
-const password = process.env.TEST_CUSTOMER_PASSWORD || 'welcome01';
-
 test.describe('Suite 2: Authentication', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/auth/login');
@@ -10,11 +7,15 @@ test.describe('Suite 2: Authentication', () => {
   });
 
   test('AUTH-01 valid customer credentials allow login', async ({ page }) => {
+    const { TEST_CUSTOMER_EMAIL: email, TEST_CUSTOMER_PASSWORD: password } = process.env;
+    if (!email || !password) {
+      throw new Error('Set TEST_CUSTOMER_EMAIL and TEST_CUSTOMER_PASSWORD before running this test.');
+    }
     await page.getByTestId('email').fill(email);
     await page.getByTestId('password').fill(password);
     await page.getByTestId('login-submit').click();
-    await expect(page.getByTestId('nav-menu')).toBeVisible();
-    await expect(page.getByTestId('nav-sign-in')).toHaveCount(0);
+    await page.waitForFunction(() => Boolean(localStorage.getItem('auth-token')));
+    await expect(page).toHaveURL(url => url.pathname === '/account');
   });
 
   test('AUTH-02 invalid credentials show login error', async ({ page }) => {

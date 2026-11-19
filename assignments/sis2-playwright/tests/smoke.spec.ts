@@ -5,7 +5,7 @@ test.describe('Suite 1: Smoke', () => {
     await page.goto('/');
     await expect(page.getByTestId('nav-home')).toBeVisible();
     await expect(page.getByTestId('nav-sign-in')).toBeVisible();
-    await expect(page.getByTestId('nav-cart')).toBeVisible();
+    await expect(page.getByTestId('nav-categories')).toBeVisible();
   });
 
   test('SM-02 catalog product detail opens', async ({ page }) => {
