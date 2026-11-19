@@ -45,3 +45,6 @@ npx playwright show-report
 ```
 
 Use `CI=true npx playwright test` to exercise the CI settings. To inspect a failure from GitHub, download its `test-results-*` artifact and open the extracted `trace.zip` with `npx playwright show-trace path/to/trace.zip`.
+
+### LLM usage for SIS 2
+Used model chatgpt 6.2 sol. Main purpose understand what is happening in repository and identify structure. Check if tests are still relevant and passing since last time. Create a plan for implementing ci pipeline for running playwright tests in github actions runner. The pipeline implemented without assisting. Helped to identify bugs and irrelevances in code. 
