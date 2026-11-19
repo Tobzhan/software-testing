@@ -31,6 +31,7 @@ test.describe('Suite 4: Cart', () => {
     await expect(row).toBeVisible();
     await row.locator('a.btn-danger').click();
     await expect(page.getByTestId('product-title')).toHaveCount(0);
-    await expect(page.getByTestId('cart-quantity')).toHaveText('0');
+    await expect(page.getByText('The cart is empty. Nothing to display.')).toBeVisible();
+    await expect(page.getByTestId('nav-cart')).toHaveCount(0);
   });
 });

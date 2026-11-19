@@ -14,8 +14,8 @@ test.describe('Suite 2: Authentication', () => {
     await page.getByTestId('email').fill(email);
     await page.getByTestId('password').fill(password);
     await page.getByTestId('login-submit').click();
-    await expect(page.getByTestId('nav-menu')).toBeVisible();
-    await expect(page.getByTestId('nav-sign-in')).toHaveCount(0);
+    await page.waitForFunction(() => Boolean(localStorage.getItem('auth-token')));
+    await expect(page).toHaveURL(url => url.pathname === '/account');
   });
 
   test('AUTH-02 invalid credentials show login error', async ({ page }) => {
